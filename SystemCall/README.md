@@ -2,7 +2,7 @@
 
 ## Aufgabe
 
-1. Ändern Sie den Source Code, so daß Sie mit Ihrem Namen begrüßt (`Hallo <Name>`) werden und führen Sie das Programm aus.
+1. Ändern Sie den Source Code, so daß Sie mit Ihrem Namen begrüßt werden (`Hallo <Name>`) und führen Sie das Programm aus.
 
 2. Übersetzen Sie das Programm mit "-S" Flag, um das Assembler Listing zu erzeugen.
 ```
