@@ -17,4 +17,6 @@ Was stellen Sie fest?
 Erzeugen Sie wieder den Assembler Source und schauen sich den Code in `hello.s` an. Finden Sie wieder den Library Call, der für die Ausgabe verwendet wird.
 Was hat sich geändert?
 4. Verfolgen Sie mit strace welche System Calls ausgeführt werden.
-> strace ./hello
+```
+# strace ./hello
+```
