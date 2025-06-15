@@ -1,9 +1,16 @@
 # System Call
 
-# Aufgabe
+## Aufgabe
 
-- Übersetzen Sie das Programm mit "-S" Flag, um das Assembler Listing zu erzeugen.
-Schauen Sie sich das Assembler Listing an, um den Library Call zu finden, der für den Text i/O verwendet wird.
-- Das Programm soll zusätzlich Ihren Namen zur Begrüßung ausgeben. Verwenden Sie dazu eine Variable, die Ihren Namen enthält.
-Erzeugen Sie das Assembler Listing und finden Sie den Library Call, der für die Ausgabe verwendet wird.
-- Verfolgen Sie mit ltrace welche Library Calls ausgeführt werden und mit strace welche System Calls ausgeführt werden.
+1. Ändern Sie den Source Code, so daß Sie mit Ihrem Namen begrüßt (Hallo <Name>) werden und führen Sie das Programm aus.
+2. Übersetzen Sie das Programm mit "-S" Flag, um das Assembler Listing zu erzeugen.
+> make hello.s
+oder
+> cc -O2 -fno-asynchronous-unwind-tables -S hello.c
+Schauen Sie sich den Assembler Code in hello.s an, um den Library Call zu finden, der für den Text I/O verwendet wird.
+Was stellen Sie fest?
+3. Ändern Sie nun den Source Code, um einen Chracter String zu verwenden, der Ihren Namen enthält.
+Erzeugen Sie wieder den Assembler Source und finden Sie wieder den Library Call, der für die Ausgabe verwendet wird.
+Was hat sich geändert?
+4. Verfolgen Sie mit strace welche System Calls ausgeführt werden.
+> strace ./hello
