@@ -1,7 +1,9 @@
 #include <stdio.h>
 
 int main(int argc, char **argv) {
-    printf("Hello <mein Name>\n");
+    char *s = "<mein Name>";
+
+    printf("Hello %s\n", s);
 
     return 0;
 }
