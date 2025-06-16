@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WORKDIR="/workspaces/Uebungen/.install"
+WORKDIR="/workspaces/print/.install"
 
 cd ${WORKDIR}
 ./install_nasm.sh
