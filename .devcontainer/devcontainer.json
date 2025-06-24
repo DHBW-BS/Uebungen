@@ -1,5 +1,5 @@
 {
-  name: "Betriebssysteme"
+  name: "Betriebssysteme",
   build: {
     "dockerfile": "Dockerfile"
   }
