@@ -1,0 +1,6 @@
+{
+  name: "Betriebssysteme"
+  build: {
+    "dockerfile": "Dockerfile"
+  }
+}
