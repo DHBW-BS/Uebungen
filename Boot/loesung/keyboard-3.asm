@@ -16,6 +16,7 @@
 
 ;------------------------------------
 hang:
+    hlt                             ; stop execution until next irpt
     jmp hang
 
 ;------------------------------------
