@@ -50,7 +50,7 @@ keyhandler:
     mov cx, keymap                  ; by index
     add bx, cx
     mov ax, [bx]
-    call cprint
+    call cprint                     ; print that char
 
     mov  si, lineend                ; print CR/LF
     call sprint
