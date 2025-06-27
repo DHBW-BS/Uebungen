@@ -14,10 +14,8 @@
     mov [gs:bx+2], ds
     sti                             ; enable interrupts
 
-    jmp hang                        ; go into endless loop
-
 ;------------------------------------
-hang:
+hang:                               ; go into endless loop
     hlt                             ; stop execution until next irpt
     jmp hang
 

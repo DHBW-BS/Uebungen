@@ -15,7 +15,7 @@
     sti                             ; enable interrupts
 
 ;------------------------------------
-hang:
+hang:                               ; go into endless loop
     hlt                             ; stop execution until next irpt
     jmp hang
 
