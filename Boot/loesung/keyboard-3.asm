@@ -48,7 +48,7 @@ keyhandler:
     mov  word[reg16], ax
     call printreg16
 
-    mov ax, 0x20                    ; print one blank
+    mov ax, ' '                     ; print one blank
     call cprint
     mov bx, [port60]                ; get char out of keymap string
     mov cx, [keymap]                ; by index
