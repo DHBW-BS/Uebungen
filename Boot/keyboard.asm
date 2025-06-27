@@ -1,24 +1,24 @@
-;boot.asm
+;keyboard.asm
 [ORG 0x7C00]
-    xor ax, ax
-    mov ds, ax
+    xor ax, ax                      ; make it zero
+    mov ds, ax                      ; data segment starts at zero
     mov ss, ax
     mov sp, 0x9C00
 
-    cli
-    mov bx, 0x09
+    cli                             ; disable interrupts
+    mov bx, 0x09                    ; set interrupt number
     shl bx, 2
     xor ax, ax
     mov gs, ax
     mov [gs:bx], word keyhandler    ; register keyboard irpt handler
     mov [gs:bx+2], ds
-    sti
+    sti                             ; enable interrupts
 
     jmp hang                        ; go into endless loop
 
 ;------------------------------------
 hang:
-    hlt
+    hlt                             ; stop execution until next irpt
     jmp hang
 
 ;------------------------------------
@@ -53,20 +53,20 @@ done:
 ;------------------------------------
 dochar:
     call cprint
-sprint:
+sprint:                             ; print string
     lodsb
     cmp al, 0
     jne dochar
     ret
 
-cprint:
+cprint:                             ; print character
     mov ah, 0x0E
     int 0x10
     ret
 
 ;------------------------------------
-printreg16:
-    mov di, outstr16
+printreg16:                         ; print 16-bit hex string
+    mov di, outstr16                ; write into outstr16
     mov ax, [reg16]
     mov si, hexstr
     mov cx, 4
@@ -80,7 +80,7 @@ hexloop:
     dec cx
     jnz hexloop
 
-    mov si, outstr16
+    mov si, outstr16                ; print outstr16
     call sprint
 
     ret
@@ -95,7 +95,7 @@ lineend     db 13, 10, 0
 
 ;------------------------------------
     times 510-($-$$) db 0
-    db 0x55
-    db 0xAA
+    db 0x55                         ; write boot sector signature at
+    db 0xAA                         ; and of sector
 
 ;------------------------------------

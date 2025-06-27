@@ -1,4 +1,4 @@
-;boot.asm
+;keyboard.asm
 [ORG 0x7C00]
     xor ax, ax                      ; make it zero
     mov ds, ax                      ; data segment starts at zero
