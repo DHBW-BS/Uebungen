@@ -3,10 +3,10 @@
 
 - System Call
 - ELF
+- Boot
 - Signal
 - Shell
 - Filesystem
-- Boot
 - Scheduler
 - Synchronisation
 - Tutorial OS16C
