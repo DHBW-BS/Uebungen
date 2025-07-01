@@ -9,3 +9,4 @@ Uebungen fuer den Kurs Betriebssysteme
 - Boot
 - Scheduler
 - Synchronisation
+- Tutorial OS16C
