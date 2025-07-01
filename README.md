@@ -1,5 +1,5 @@
-# Uebungen
-Uebungen fuer den Kurs Betriebssysteme
+# Übungen
+Übungen für den Kurs Betriebssysteme
 
 - System Call
 - ELF
