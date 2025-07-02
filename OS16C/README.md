@@ -13,7 +13,8 @@ bauen wollen. Deshalb ist es ratsam den Makefile zu verwenden.
 ```
 Laden Sie das Floppy Image `boot.flp` runter, laden es in Ihrem Virtual Guest als Floppy und starten Sie das Virtual System.
 
-2. Implementieren Sie einen Keyboard Handler, der einen Tastendrucke entgegen nimmt und das Zeichen auf dem Bildschirm anzeigt.
+2. Implementieren Sie einen Keyboard Handler, der einen Tastendrucke entgegen nimmt und das Zeichen auf dem Bildschirm anzeigt. \
+Der Code in der Lösung zeigt Tastencode und Character an.
 
 3. Implementieren Sie eine minimale Shell, die das Kommando `exit` entgegen nimmt und damit das System anhält.
 
