@@ -14,5 +14,5 @@ _start:
     int 0x80                    ; call kernel
 
 section .data                   ; data
-msg db "Hello World", 0x0a      ; message with end byte
+msg db "Hello World", 0x0A      ; message with end byte
 len equ $ - msg                 ; compute length of message
