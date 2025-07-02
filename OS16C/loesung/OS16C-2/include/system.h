@@ -9,8 +9,8 @@ typedef unsigned char       uint8_t;
 typedef unsigned short int  uint16_t;
 
 /* irq */
-uint8_t inb(uint16_t port);
-void outb(uint8_t v, uint16_t port);
+extern uint8_t inb(uint16_t port);
+extern void outb(uint8_t v, uint16_t port);
 extern void registerinterrupt(int irq, void* handler);
 
 /* keyboard */
