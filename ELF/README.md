@@ -21,6 +21,7 @@ Nutzen Sie dazu wieder die Informationen aus `/usr/include/elf.h`oder dem angege
 # nasm -f elf64 print.asm
 # ld -o print print.o
 ```
+Schauen Sie sich das Directory Listing an und vergleichen Sie die Größe von `hello` mit der von `print`.
 
 6. Schreiben Sie einen ELF Header und einen Program Header an den Anfang des Assembler Programms, so daß das Programm nur noch assembliert 
 werden muß und ohne Linkage gestartet werden kann. \
@@ -29,6 +30,7 @@ Assemblieren Sie `print.asm` mit Listing Ausgabe, damit Sie die INhalt und Forma
 ```
 # nasm -l print.lst print.asm
 ```
+Schauen Sie sich wieder das Directory Listing an und vergleichen Sie die Größe von `hello` mit der von `print`.
 
 ## Informationen
 https://en.wikipedia.org/wiki/Executable_and_Linkable_Format
