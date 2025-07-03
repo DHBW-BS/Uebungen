@@ -24,6 +24,6 @@ Der Code in der Lösung zeigt Tastencode und Character an.
 Lesen Sie das FAT Verzeichnis auf der Floppy `data.flp` und implementieren Sie ein `dir`Kommando, mit dem das Verzeichnis auf dem Bildschirm 
 angezeigt wird.
 
-6. Implementieren Sie einen System Call Handler, der auf `INT 0x20` reagiert und eine Fehlermeldung für unbekannte System Calls ausgibt.
+6. Implementieren Sie einen System Call Handler, der auf `INT 0x21` reagiert und eine Fehlermeldung für unbekannte System Calls ausgibt.
 
 7. Laden Sie eines der `.COM` Programme von der Floppy und führen es aus. 
