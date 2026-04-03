@@ -10,20 +10,6 @@ void print(char *s) {
     return;
 }
 
-void printHex8(uint8_t n) {
-    char *hexdigit = "0123456789ABCDEF";
-    uint8_t m;
-
-    m = n >> 4;
-    m = m & 0x000F;
-    putchar(hexdigit[m]);
-    m = n;
-    m = m & 0x000F;
-    putchar(hexdigit[m]);
-
-    return;
-}
-
 void putchar(char c) {
     __asm__ volatile (
         "mov  %0, %%al\n\t"

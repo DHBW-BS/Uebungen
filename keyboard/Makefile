@@ -4,7 +4,7 @@ OBJS = $(SRCS:.c=.o)
 ASFLAGS = -l $(basename $@).lst
 CFLAGS = -std=c89 -m32 -march=pentium \
          -Wall \
-         -I./include \
+         -I. \
          -nostdlib -fno-builtin \
          -Xassembler -al=$(basename $@).lst
 LDFLAGS = -melf_i386 -Ttext=0x8000 -defsym _start=kmain --oformat=binary
