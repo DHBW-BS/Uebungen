@@ -4,13 +4,13 @@ OBJS = $(SRCS:.c=.o)
 ASFLAGS = -l $(basename $@).lst
 CFLAGS = -std=c89 -m32 -march=pentium \
          -Wall \
-         -I./include \
-         -nostdlib -fno-builtin \
+         -I. \
+         -nostdlib -fno-builtin -fno-pie \
          -Xassembler -al=$(basename $@).lst
 LDFLAGS = -melf_i386 -Ttext=0x8000 -defsym _start=kmain --oformat=binary
 
-CC = /usr/local/bin/x86_64-elf-gcc
-LD = /usr/local/bin/x86_64-elf-ld
+CC = gcc
+LD = ld
 AS = nasm
 
 all:	boot.flp
