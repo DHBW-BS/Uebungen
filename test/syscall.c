@@ -5,13 +5,13 @@ void syscall(void) {
 	uint32_t nr, edx;
 	int irq = 0x21;
 
-	asm volatile (
+	__asm__ volatile (
 		""
 		: "=a"(nr), "=d"(edx)
 		: /* no input */
 		: /* no globber */);
 
-	asm volatile (
+	__asm__ volatile (
 		"    shl $2, %%bx\n"
 		"    mov %%ax, %%gs\n"
 		"    mov %%ds, %%ax\n"
@@ -28,7 +28,7 @@ void syscall(void) {
 		syscall_4C_exit();
 	}
 
-	asm volatile (
+	__asm__ volatile (
 		"    mov %%ax, %%ds\n"
 		"    mov $0x41, %%al\n"
 		"    mov $0x0e, %%ah\n"
@@ -64,7 +64,7 @@ static inline void syscall_4C_exit(void) {
 
 	/* should we worry about the stack ? */
 
-	asm volatile (
+	__asm__ volatile (
 		"    mov  $0x20, %%al\n"
 		"    out  %%al, $0x20\n"
 		"    leave"
