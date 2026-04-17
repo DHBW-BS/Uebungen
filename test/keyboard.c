@@ -37,12 +37,8 @@ void bufferhandler(uint8_t c) {
 }
 
 char getchar(void) {
-	char c;
-
-	if (key_buffer.w_pos != key_buffer.r_pos) {
-		c = key_buffer.s[key_buffer.r_pos];
-		key_buffer.r_pos = (key_buffer.r_pos + 1) % BUFFERSIZE;
-		return c;
+	if (write_pos > read_pos) {
+		return key_buffer[read_pos++];
 	} else {
 		return 0;
 	}
