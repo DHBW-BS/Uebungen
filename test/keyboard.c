@@ -24,7 +24,7 @@ static char keymap[] = {
 };
 
 void bufferhandler(uint8_t c) {
-	if (!(c&0x80)) {			// key press
+	if (!(c&0x80)) {			/* key press */
 		if (keymap[c] != '\0') {
 			key_buffer[write_pos++] = keymap[c];
 			putchar(keymap[c]);
