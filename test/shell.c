@@ -26,6 +26,7 @@ uint32_t search(char*);
 int strcmp(const char*, const char*);
 char *strncpy(char*, const char*, int);
 int strncmp(const char*, const char*, int);
+int tolower(int);
 
 void dir(char *buffer) {
 	struct FAT_ENTRY *entry;
@@ -179,6 +180,11 @@ uint32_t search(char *name) {
 		if (entry->attr & ATTR_ARCHIVE) {
 			strncpy(s, (char*)entry->filename, 8);
 			s[8] = '\0';
+			i = 0;
+			while(s[i] != '\0') {
+				s[i] = tolower(s[i]);
+				i++;
+			}
 			print(s);
 			print("\r\n");
 			if (strcmp(s, q) == 0) {
@@ -275,4 +281,10 @@ char *strncpy(char *dest, const char * src, int n) {
 		dest[i] = src[i];
 	}
 	return dest;
+}
+
+int tolower(int c) {
+	if (c >= 'A') && (c <= 'Z') {
+		return c + 32;
+	}
 }
