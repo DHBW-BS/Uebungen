@@ -148,7 +148,7 @@ char *itoa(char *dest, int src) {
 void load(char *name, uint32_t addr) {
 	uint32_t s_addr, size;
 
-	s_addr = search(name, uint32_t &size);
+	s_addr = search(name, &size);
 
 	print("load\r\n");
 	print("name: ");
