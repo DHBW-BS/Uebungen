@@ -169,7 +169,7 @@ uint32_t search(char *name) {
 		if (entry->attr & ATTR_ARCHIVE) {
 			strncpy(s, (char*)entry->filename, 8);
 			s[8] = 0;
-			if (strcmp(name, s) == 0) {
+			if (strcmp(s, "09WRITE") == 0) {
 				break;
 			}
 		}
@@ -178,11 +178,11 @@ uint32_t search(char *name) {
 		entry = (struct FAT_ENTRY *)pbuffer;
 	}
 
-	print("name");
+	print("name: ");
 	print(s);
 	print("\r\n");
-	print("addr\r\n");
-	print("size\r\n");
+	print("addr: \r\n");
+	print("size: \r\n");
 
 	return 0;
 }
