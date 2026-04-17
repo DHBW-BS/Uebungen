@@ -154,6 +154,7 @@ uint32_t search(char *name) {
 	struct FAT_ENTRY *entry;
 	static char s[32];
 	static char buffer[512];
+	char *pbuffer;
 
 	print("search ");
 	print(name);
@@ -162,7 +163,8 @@ uint32_t search(char *name) {
 	floppy_reset();
 	floppy_read(buffer, 2, 0, 1, 1);
 
-	entry = (struct FAT_ENTRY *)buffer;
+	pbuffer = buffer;
+	entry = (struct FAT_ENTRY *)pbuffer;
 	while (entry->attr != 0) {
 		if (entry->attr & ATTR_ARCHIVE) {
 			strncpy(s, (char*)entry->filename, 8);
@@ -175,8 +177,8 @@ uint32_t search(char *name) {
 			print("\r\n");
 		}
 
-		buffer = buffer + 32;
-		entry = (struct FAT_ENTRY *)buffer;
+		pbuffer = pbuffer + 32;
+		entry = (struct FAT_ENTRY *)pbuffer;
 	}
 
 	print("name\r\n");
