@@ -71,7 +71,7 @@ void printHex8(uint8_t n) {
 void halt(void) {
 	print("system halted\n\r");
 
-	asm volatile (
+	__asm__ volatile (
 		"cli\n"
 		"hlt"
 		: /* no output */
