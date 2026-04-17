@@ -18,7 +18,11 @@ typedef struct FAT_ENTRY {
 	uint32_t	size;
 } __attribute__((packed)) FAT_ENTRY_t;
 
+void dump_floppy(uint32_t addr);
+void dump_mem(uint32_t addr);
 char *itoa(char*, int);
+void load(char *name, uint32_t addr);
+uint32_t search(char*);
 int strcmp(const char*, const char*);
 char *strncpy(char*, const char*, int);
 int strncmp(const char*, const char*, int);
@@ -86,6 +90,14 @@ void dir(char *buffer) {
 	return;
 }
 
+void dump_floppy(uint32_t addr) {
+	return;
+}
+
+void dump_mem(uint32_t addr) {
+	return;
+}
+
 void execute(char *cmd) {
 	static char buffer[512];
 
@@ -133,7 +145,15 @@ char *itoa(char *dest, int src) {
 }
 
 void load(char *name, uint32_t addr) {
+	search(name);
+
 	return;
+}
+
+uint32_t search(char *name) {
+	print("search ");
+	print(name);
+	print("\r\n");
 }
 
 void shell(void) {
