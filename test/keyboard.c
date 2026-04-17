@@ -23,6 +23,19 @@ static char keymap[] = {
 	'\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0'		/* 78 */
 };
 
+void bufferhandler(uint8_t c) {
+	if (!(c&0x80)) {			// key press
+		if (keymap[c] != '\0') {
+			key_buffer[write_pos++] = keymap[c];
+			sys_putchar(keymap[c]);
+		} else {
+			sys_puthex(c);
+		}
+	}
+
+	return;
+}
+
 char getchar(void) {
 	char c;
 
@@ -50,8 +63,7 @@ void keyboardhandler(void) {
     outb(a, 0x61);
     outb(0x20, 0x20);
 
-    printHex8(c);               /* print key code */
-    print("\n\r");
+	bufferhandler(c);
 
     __asm__ volatile (
         "    popa\n"

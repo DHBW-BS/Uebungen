@@ -131,8 +131,7 @@ void shell(void) {
 
 	print("c:> ");
 	while (1) {
-		if (key_buffer.w_pos != key_buffer.r_pos) {
-			c = getchar();
+		if ((c = getchar())) {
 			if (c == '\n') {
 				print("\r");
 				execute(s);
