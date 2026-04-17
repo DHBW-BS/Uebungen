@@ -51,7 +51,7 @@ void syscall_09_write(uint16_t ds, uint16_t dx) {
 
 	p = (char*)(uint16_t*)((ds << 4) + dx);
 	while ((s=*p) != '$') {
-		sys_putchar(s);
+		putchar(s);
 		p++;
 	}
 
