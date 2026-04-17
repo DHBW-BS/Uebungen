@@ -27,9 +27,7 @@ void bufferhandler(uint8_t c) {
 	if (!(c&0x80)) {			// key press
 		if (keymap[c] != '\0') {
 			key_buffer[write_pos++] = keymap[c];
-			sys_putchar(keymap[c]);
-		} else {
-			sys_puthex(c);
+			putchar(keymap[c]);
 		}
 	}
 
