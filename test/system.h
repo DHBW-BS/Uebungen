@@ -14,6 +14,7 @@ extern void floppy_read(char *buffer, int sector, int track, int head, int drive
 extern void floppy_reset(void);
 
 /* irq */
+extern void enable_irq(void);
 extern uint8_t inb(uint16_t port);
 extern void outb(uint8_t v, uint16_t port);
 extern void registerinterrupt(int irq, void* handler);
@@ -28,7 +29,11 @@ extern void keyboardhandler(void);
 /* shell */
 extern void shell(void);
 
+/* syscall */
+void syscall(void);
+
 /* terminal */
 extern void print(char *s);
-extern void printHex8(uint8_t n);
 extern void putchar(char c);
+extern void printHex8(uint8_t n);
+extern void puthex32(uint32_t n)

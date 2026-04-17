@@ -1,5 +1,13 @@
 #include <system.h>
 
+void enable_irq(void) {
+	asm volatile (
+		"sti"
+		: /* no output */
+		: /* no input */
+		: /* no globber */);
+}
+
 uint8_t inb(uint16_t port) {
 	uint8_t v;
 	__asm__ volatile (

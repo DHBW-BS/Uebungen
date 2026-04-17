@@ -22,7 +22,7 @@ void dump_floppy(uint32_t addr);
 void dump_mem(uint32_t addr);
 char *itoa(char*, int);
 void load(char *name, uint32_t addr);
-uint32_t search(char*);
+uint32_t search(char*, uint32_t*);
 int strcmp(const char*, const char*);
 char *strncpy(char*, const char*, int);
 int strncmp(const char*, const char*, int);
@@ -146,16 +146,28 @@ char *itoa(char *dest, int src) {
 }
 
 void load(char *name, uint32_t addr) {
-	search(name);
+	uint32_t s_addr, size;
+
+	s_addr = search(name, uint32_t &size);
+
+	print("load\r\n");
+	print("name: ");
+	print(s);
+	print("\r\n");
+	print("addr: \r\n");
+	print("\r\n");
+	print("size: ");
+	print("\r\n");
 
 	return;
 }
 
-uint32_t search(char *name) {
+uint32_t search(char *name, uint32_t *size) {
 	struct FAT_ENTRY *entry;
 	static char s[9], q[9];
 	static char buffer[512];
 	char *pbuffer;
+	uint32_t start, addr, size;
 	int i;
 
 	for (i=0; i<8; i++) {
@@ -199,13 +211,19 @@ uint32_t search(char *name) {
 		entry = (struct FAT_ENTRY *)pbuffer;
 	}
 
+	start = (entry->starthi) << 16 | entry->start;
+	addr = (1+9+9)*512 + 32*224 + (start-2)*512;
+	size = entry.size;
+
 	print("name: ");
 	print(s);
 	print("\r\n");
 	print("addr: \r\n");
-	print("size: \r\n");
+	print("\r\n");
+	print("size: ");
+	print("\r\n");
 
-	return 0;
+	return addr;
 }
 
 void shell(void) {

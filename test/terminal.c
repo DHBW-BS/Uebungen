@@ -21,3 +21,27 @@ void putchar(char c) {
 
     return;
 }
+
+void puthex8(uint8_t n) {
+	uint8_t c, d;
+    hexstring[] = "0123456789";
+
+    for (i=0; i<2;i++) {
+        putchar(hexstring[n&0x0f]);
+    	n = n >> 4;
+    }
+
+	return;
+}
+
+void puthex32(uint32_t n) {
+	uint32_t c, d;
+    hexstring[] = "0123456789";
+
+    for (i=0; i<8;i++) {
+        putchar(hexstring[n&0x0f]);
+    	n = n >> 4;
+    }
+
+	return;
+}
