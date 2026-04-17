@@ -1,5 +1,7 @@
 #include <system.h>
 
+int strcmp(const char*, const char*)
+
 void dir(void) {
 	static char buffer[512];
 	char *p;
@@ -124,6 +126,28 @@ void execute(char *cmd) {
 	return;
 }
 
+char *itoa(char *dest, int src) {
+	int i, n;
+
+	if (src == 0) {
+		dest[0] = '0';
+		dest[1] = 0;
+	} else {
+		n=0;
+		dest[n] = 0;
+
+		while (src > 0) {
+			for (i=++n; i>0; i--) {
+				dest[i] = dest[i-1];
+			}
+			dest[0] = (src%10)+0x30;
+			src = src/10;
+		}
+	}
+
+	return dest;
+}
+
 void shell(void) {
 	static char s[80];
 	char c;
@@ -150,4 +174,27 @@ void shell(void) {
 	print("exit shell\r\n");
 
 	return;
+}
+
+int strcmp(const char *s1, const char *s2) {
+	char c;
+	int rc = 0;
+	int i=0;
+
+	while((c = s1[i]) != '\0') {
+		if (s2[i] == '\0') {
+			rc = -1;
+			break;
+		} else if (s2[i] != c) {
+			rc = -1;
+			break;
+		}
+		i++;
+	}
+
+	if (s2[i] != '\0') {
+		rc = 1;
+	}
+
+	return rc;
 }
