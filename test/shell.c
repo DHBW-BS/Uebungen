@@ -1,6 +1,7 @@
 #include <system.h>
 
-int strcmp(const char*, const char*)
+char *itoa(char*, int);
+int strcmp(const char*, const char*);
 
 void dir(void) {
 	static char buffer[512];
