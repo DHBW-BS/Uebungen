@@ -40,7 +40,6 @@ void dir(char *buffer) {
 			print(s);
 			print("\r\n");
 			print(" Volume Serial Number is ");
-			//printf("%04X-%04X", (bsext.serial & 0xffff0000)/0x10000, bsext.serial & 0xffff);
 			print("\r\n");
 			print(" Directory of A:\\");
 			print("\r\n");
