@@ -23,29 +23,29 @@ void putchar(char c) {
 }
 
 void puthex8(uint8_t n) {
-	int i;
     char hexstring[] = "0123456789ABCDEF";
-
-    putchar(hexstring[n & 0x0f]);
-
-	return;
+    char outstring[] = "  ";
+	int i;
 
     for (i=0; i<2;i++) {
-        putchar(hexstring[n&0x0f]);
+        outstring[2-i] = hexstring[n&0x0f]);
     	n = n >> 4;
     }
+    print(outstring);
 
 	return;
 }
 
 void puthex32(uint32_t n) {
-	int i;
     char hexstring[] = "0123456789ABCDEF";
+    char outstring[] = "        ";
+	int i;
 
     for (i=0; i<8;i++) {
-        putchar(hexstring[n&0x0f]);
+        outstring[7-i] = hexstring[n&0x0f]);
     	n = n >> 4;
     }
+    print(outstring);
 
 	return;
 }
