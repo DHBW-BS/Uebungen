@@ -7,6 +7,7 @@ __asm__ (
 /* types */
 typedef unsigned char       uint8_t;
 typedef unsigned short int  uint16_t;
+typedef unsigned int		uint32_t;
 
 /* irq */
 extern uint8_t inb(uint16_t port);

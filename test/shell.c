@@ -1,42 +1,36 @@
 #include <system.h>
 
+#define ATTR_VOLUMELABEL	0x08
+#define ATTR_ARCHIVE		0x20
+
+typedef struct FAT_ENTRY {
+	uint8_t		filename[11];
+	uint8_t		attr;
+	uint8_t		lcase;
+	uint8_t		ctime_cs;
+	uint16_t	ctime;
+	uint16_t	cdate;
+	uint16_t	adate;
+	uint16_t	starthi;
+	uint16_t	mtime;
+	uint16_t	mdate;
+	uint16_t	start;
+	uint32_t	size;
+} __attribute__((packed)) FAT_ENTRY_t;
+
 char *itoa(char*, int);
 int strcmp(const char*, const char*);
 
-void dir(void) {
-	static char buffer[512];
-	char *p;
-	struct FAT_BS *bs;
-	struct FAT_BSEXT *bsext;
+void dir(char *buffer) {
 	struct FAT_ENTRY *entry;
 	static char s[32];
-	int serial_1, serial_2;
-	int n, b, free, used;
 
-	floppy_reset();
-	floppy_read(buffer, 1, 0, 0, 1);
-
-	p = buffer;
-	bs = (struct FAT_BS *)p;
-	n = 5;		/* number of files needs to be fixed */
-	free = bs->total_sectors_16 * bs->bytes_per_sector
-	       - (bs->table_size_16 * bs->table_count + 1) * bs->bytes_per_sector	// Boot Sector + FATs
-	       - n * bs->bytes_per_sector											// one sector per file
-	       - bs->root_entry_count * 32;											// directory entries
-
-	p = buffer+36;
-	bsext = (struct FAT_BSEXT *)p;
-	serial_1 = (bsext->serial & 0xffff0000)/0x10000;
-	serial_2 = bsext->serial & 0xffff;
-	floppy_reset();
-	floppy_read(buffer, 2, 0, 1, 1);
+	int n, b, used;
 
 	n = 0;
 	used = 0;
 
-	p = buffer;
-	entry = (struct FAT_ENTRY *)p;
-
+	entry = (struct FAT_ENTRY *)buffer;
 	while (entry->attr != 0) {
 		if (entry->attr & ATTR_VOLUMELABEL) {
 			print("\r\n");
@@ -46,11 +40,7 @@ void dir(void) {
 			print(s);
 			print("\r\n");
 			print(" Volume Serial Number is ");
-			puthex((serial_1 >> 8) & 0x00ff);
-			puthex(serial_1 & 0x00ff);
-			print("-");
-			puthex((serial_2 >> 8) & 0x00ff);
-			puthex(serial_2 & 0x00ff);
+			//printf("%04X-%04X", (bsext.serial & 0xffff0000)/0x10000, bsext.serial & 0xffff);
 			print("\r\n");
 			print(" Directory of A:\\");
 			print("\r\n");
@@ -64,48 +54,33 @@ void dir(void) {
 			s[3] = 0;
 			print(s);
 			print("            ");
-			b = entry->size;								// file size
+			b = entry->size;							// file size
 			used = used + b;
-			print(itoa(b));
-			b = entry->mdate & 0x001f;						// day
+			print(itoa(s, b));
+			b = entry->mdate & 0x001f;					// day
 			print(" ");
-			if (b<10) print("0");
-			print(itoa(b));
-			b = (entry->mdate & 0x1e0) / 32;				// month
-			print(".");
-			if (b<10) print("0");
-			print(itoa(b));
-			b = (80 + (entry->mdate & 0xf700) / 512)%100;	// year
-			print(".");
-			if (b<10) print("0");
-			print(itoa(b));
-			print("   ");
-			b = (entry->mtime & 0xf800) / 2048;				// hour
-			if (b<10) print("0");
-			print(itoa(b));
-			print(":");
-			b = (entry->mtime & 0x07e0) / 32;				// minute
-			if (b<10) print("0");
-			print(itoa(b));
+			print(itoa(s, b));
+														// month
+														// year
 			print("\r\n");
 
 			n++;
 		}
 
-		p = p + 32;
-		entry = (struct FAT_ENTRY *)p;
+		buffer = buffer + 32;
+		entry = (struct FAT_ENTRY *)buffer;
 	}
 
 	print("        ");
-	print(itoa(n));
-	print(" file(s)");
+	print(itoa(s, n));
+	print(" files");
 	print("        ");
-	print(itoa(used));
+	print(itoa(s, used));
 	print(" bytes\r\n");
 
 	print("        ");
-	print(itoa(free));
 	print(" bytes free\r\n");
+
 
 	return;
 }
