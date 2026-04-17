@@ -171,7 +171,7 @@ uint32_t search(char *name) {
 			s[8] = 0;
 			print(s);
 			print("\r\n");
-			if (strcmp(s, "09WRITE") == 0) {
+			if (strcmp(s, "09WRITE ") == 0) {
 				print("found ");
 				print(s);
 				print("\r\n");
