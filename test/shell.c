@@ -284,7 +284,7 @@ char *strncpy(char *dest, const char * src, int n) {
 }
 
 int tolower(int c) {
-	if (c >= 'A') && (c <= 'Z') {
+	if ((c >= 'A') && (c <= 'Z')) {
 		return c + 32;
 	}
 }
