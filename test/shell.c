@@ -1,3 +1,5 @@
+#include <system.h>
+
 void dir(void) {
 	static char buffer[512];
 	char *p;
