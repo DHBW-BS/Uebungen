@@ -20,6 +20,7 @@ typedef struct FAT_ENTRY {
 
 char *itoa(char*, int);
 int strcmp(const char*, const char*);
+char *strncpy(char*, const char*, int);
 
 void dir(char *buffer) {
 	struct FAT_ENTRY *entry;
@@ -176,4 +177,12 @@ int strcmp(const char *s1, const char *s2) {
 	}
 
 	return rc;
+}
+
+char *strncpy(char *dest, const char * src, int n) {
+	int i;
+	for (i=0; i<n; i++) {
+		dest[i] = src[i];
+	}
+	return dest;
 }
