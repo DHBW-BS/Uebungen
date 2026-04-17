@@ -53,14 +53,14 @@ void dir(char *buffer) {
 			s[3] = 0;
 			print(s);
 			print("            ");
-			b = entry->size;							// file size
+			b = entry->size;							/* file size */
 			used = used + b;
 			print(itoa(s, b));
-			b = entry->mdate & 0x001f;					// day
+			b = entry->mdate & 0x001f;					/* day */
 			print(" ");
 			print(itoa(s, b));
-														// month
-														// year
+														/* month */
+														/* year */
 			print("\r\n");
 
 			n++;
