@@ -101,6 +101,7 @@ void execute(char *cmd) {
 		halt();
 	} else if (strncmp(cmd, "load ", 5) == 0) {
 		print("CMD: load\r\n");
+		load(cmd+5, 0x4100);
 	} else {
 		print(cmd);
 		print(" not found\r\n");
