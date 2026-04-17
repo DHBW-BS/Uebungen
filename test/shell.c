@@ -169,19 +169,18 @@ uint32_t search(char *name) {
 		if (entry->attr & ATTR_ARCHIVE) {
 			strncpy(s, (char*)entry->filename, 8);
 			s[8] = 0;
-			print(s);
-			print(" ");
-			strncpy(s, (char*)entry->filename+8, 3);
-			s[3] = 0;
-			print(s);
-			print("\r\n");
+			if (strcmp(name, s) == null) {
+				break;
+			}
 		}
 
 		pbuffer = pbuffer + 32;
 		entry = (struct FAT_ENTRY *)pbuffer;
 	}
 
-	print("name\r\n");
+	print("name");
+	print(s);
+	print("\r\n");
 	print("addr\r\n");
 	print("size\r\n");
 
