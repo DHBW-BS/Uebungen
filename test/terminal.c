@@ -26,6 +26,10 @@ void puthex8(uint8_t n) {
 	int i;
     char hexstring[] = "0123456789";
 
+    putchar(hexstring[0]);
+
+	return;
+
     for (i=0; i<2;i++) {
         putchar(hexstring[n&0x0f]);
     	n = n >> 4;
@@ -37,6 +41,8 @@ void puthex8(uint8_t n) {
 void puthex32(uint32_t n) {
 	int i;
     char hexstring[] = "0123456789";
+
+	return;
 
     for (i=0; i<8;i++) {
         putchar(hexstring[n&0x0f]);

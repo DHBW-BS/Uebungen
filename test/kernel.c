@@ -25,6 +25,7 @@ int kmain(void) {
     print("\r\n");
     puthex32(0xDEADBEEF);
     print("\r\n");
+    halt();
 
     shell();
     halt();
