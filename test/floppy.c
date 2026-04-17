@@ -1,3 +1,5 @@
+#include <system.h>
+
 static void floppy_read(char *buffer, int sector, int track, int head, int drive) {
 	int ax, cx, dx;
 	int command, ndata;
@@ -9,7 +11,7 @@ static void floppy_read(char *buffer, int sector, int track, int head, int drive
 	cx = (track << 8) | sector;
 	dx = (head << 8) | drive;
 
-	asm volatile (
+	__asm__ volatile (
 		"    int  $0x13"
 		: /* no output */
 		: "b"(buffer), "a"(ax), "c"(cx), "d"(dx)
@@ -19,7 +21,7 @@ static void floppy_read(char *buffer, int sector, int track, int head, int drive
 }
 
 static void floppy_reset(void) {
-	asm volatile (				/* reset floppy controller */
+	__asm__ volatile (				/* reset floppy controller */
 		"    mov  $0x00, %%ah\n"
 		"    int  $0x13"
 		: /* no output */
