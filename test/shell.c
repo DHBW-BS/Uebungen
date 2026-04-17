@@ -152,7 +152,7 @@ void load(char *name, uint32_t addr) {
 
 	print("load\r\n");
 	print("name: ");
-	print(s);
+	print(name);
 	print("\r\n");
 	print("addr: \r\n");
 	print("\r\n");
