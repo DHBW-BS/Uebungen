@@ -45,7 +45,7 @@ void syscall(void) {
 }
 
 /* 09 - WRITE STRING TO STANDARD OUTPUT */
-static inline void syscall_09_write(uint16_t ds, uint16_t dx) {
+void syscall_09_write(uint16_t ds, uint16_t dx) {
 	char *p;
 	char s;
 
@@ -59,7 +59,7 @@ static inline void syscall_09_write(uint16_t ds, uint16_t dx) {
 }
 
 /* 4C - EXIT - TERMINATE WITH RETURN CODE */
-static inline void syscall_4C_exit(void) {
+void syscall_4C_exit(void) {
 	/* enable interrupts */
 
 	/* should we worry about the stack ? */
