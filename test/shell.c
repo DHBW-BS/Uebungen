@@ -21,6 +21,7 @@ typedef struct FAT_ENTRY {
 char *itoa(char*, int);
 int strcmp(const char*, const char*);
 char *strncpy(char*, const char*, int);
+int strncmp(const char*, const char*, int);
 
 void dir(char *buffer) {
 	struct FAT_ENTRY *entry;
@@ -98,6 +99,8 @@ void execute(char *cmd) {
 	} else if (strcmp(cmd, "halt") == 0) {
 		print("CMD: halt\r\n");
 		halt();
+	} else if (strncmp(cmd, "load ", 5) == 0) {
+		print("CMD: load\r\n");
 	} else {
 		print(cmd);
 		print(" not found\r\n");
@@ -126,6 +129,10 @@ char *itoa(char *dest, int src) {
 	}
 
 	return dest;
+}
+
+void load(char *name, uint32_t addr) {
+	return;
 }
 
 void shell(void) {
@@ -174,6 +181,22 @@ int strcmp(const char *s1, const char *s2) {
 
 	if (s2[i] != '\0') {
 		rc = 1;
+	}
+
+	return rc;
+}
+
+int strncmp(const char *s1, const char *s2, int n) {
+	int rc = 0;
+	int i;
+
+	for (i=0; i<n; i++) {
+		if (s1[i] != s2[i]) {
+			rc = -1;
+			break;
+		} else if (s1[i] == '\0') {
+			break;
+		}
 	}
 
 	return rc;
