@@ -1,7 +1,7 @@
 #include <system.h>
 
 void enable_irq(void) {
-	asm volatile (
+	__asm__ volatile (
 		"sti"
 		: /* no output */
 		: /* no input */
