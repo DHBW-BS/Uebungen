@@ -10,8 +10,8 @@ typedef unsigned short int  uint16_t;
 typedef unsigned int		uint32_t;
 
 /* floppy */
-static void floppy_read(char *buffer, int sector, int track, int head, int drive);
-static void floppy_reset(void);
+extern void floppy_read(char *buffer, int sector, int track, int head, int drive);
+extern void floppy_reset(void);
 
 /* irq */
 extern uint8_t inb(uint16_t port);

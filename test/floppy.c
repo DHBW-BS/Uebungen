@@ -1,6 +1,6 @@
 #include <system.h>
 
-static void floppy_read(char *buffer, int sector, int track, int head, int drive) {
+void floppy_read(char *buffer, int sector, int track, int head, int drive) {
 	int ax, cx, dx;
 	int command, ndata;
 
@@ -20,7 +20,7 @@ static void floppy_read(char *buffer, int sector, int track, int head, int drive
 	return;
 }
 
-static void floppy_reset(void) {
+void floppy_reset(void) {
 	__asm__ volatile (				/* reset floppy controller */
 		"    mov  $0x00, %%ah\n"
 		"    int  $0x13"
