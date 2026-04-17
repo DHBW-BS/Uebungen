@@ -16,6 +16,9 @@ extern void registerinterrupt(int irq, void* handler);
 /* keyboard */
 extern void keyboardhandler(void);
 
+/* shell */
+extern void shell(void);
+
 /* terminal */
 extern void print(char *s);
 extern void printHex8(uint8_t n);
