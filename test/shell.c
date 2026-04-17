@@ -151,9 +151,39 @@ void load(char *name, uint32_t addr) {
 }
 
 uint32_t search(char *name) {
+	struct FAT_ENTRY *entry;
+	static char s[32];
+	static char buffer[512];
+
 	print("search ");
 	print(name);
 	print("\r\n");
+
+	floppy_reset();
+	floppy_read(buffer, 2, 0, 1, 1);
+
+	entry = (struct FAT_ENTRY *)buffer;
+	while (entry->attr != 0) {
+		if (entry->attr & ATTR_ARCHIVE) {
+			strncpy(s, (char*)entry->filename, 8);
+			s[8] = 0;
+			print(s);
+			print(" ");
+			strncpy(s, (char*)entry->filename+8, 3);
+			s[3] = 0;
+			print(s);
+			print("\r\n");
+		}
+
+		buffer = buffer + 32;
+		entry = (struct FAT_ENTRY *)buffer;
+	}
+
+	print("name\r\n");
+	print("addr\r\n");
+	print("size\r\n");
+
+	return;
 }
 
 void shell(void) {
