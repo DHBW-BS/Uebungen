@@ -26,7 +26,7 @@ void puthex8(uint8_t n) {
 	int i;
     char hexstring[] = "0123456789";
 
-    putchar(hexstring[0]);
+    putchar(hexstring[n & 0x0f]);
 
 	return;
 
