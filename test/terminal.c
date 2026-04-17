@@ -28,7 +28,7 @@ void puthex8(uint8_t n) {
 	int i;
 
     for (i=0; i<2;i++) {
-        outstring[2-i] = hexstring[n&0x0f];
+        outstring[1-i] = hexstring[n&0x0f];
     	n = n >> 4;
     }
     print(outstring);
