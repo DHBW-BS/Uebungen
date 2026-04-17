@@ -183,7 +183,7 @@ uint32_t search(char *name) {
 	print("addr\r\n");
 	print("size\r\n");
 
-	return;
+	return 0;
 }
 
 void shell(void) {
