@@ -86,11 +86,15 @@ void dir(char *buffer) {
 }
 
 void execute(char *cmd) {
+	static char buffer[512];
+
 	if (strcmp(cmd, "start") == 0) {
 		print("CMD: start\r\n");
 	} else if (strcmp(cmd, "dir") == 0) {
 		print("CMD: dir\r\n");
-		dir();
+		floppy_reset();
+		floppy_read(buffer, 2, 0, 1, 1);
+		dir(buffer);
 	} else if (strcmp(cmd, "halt") == 0) {
 		print("CMD: halt\r\n");
 		halt();
