@@ -167,7 +167,7 @@ uint32_t search(char *name, uint32_t *size) {
 	static char s[9], q[9];
 	static char buffer[512];
 	char *pbuffer;
-	uint32_t start, addr, size;
+	uint32_t start, addr;
 	int i;
 
 	for (i=0; i<8; i++) {
@@ -213,7 +213,7 @@ uint32_t search(char *name, uint32_t *size) {
 
 	start = (entry->starthi) << 16 | entry->start;
 	addr = (1+9+9)*512 + 32*224 + (start-2)*512;
-	size = entry->size;
+	*size = entry->size;
 
 	print("name: ");
 	print(s);
