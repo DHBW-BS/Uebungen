@@ -213,7 +213,7 @@ uint32_t search(char *name, uint32_t *size) {
 
 	start = (entry->starthi) << 16 | entry->start;
 	addr = (1+9+9)*512 + 32*224 + (start-2)*512;
-	size = entry.size;
+	size = entry->size;
 
 	print("name: ");
 	print(s);
