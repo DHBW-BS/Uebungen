@@ -152,13 +152,23 @@ void load(char *name, uint32_t addr) {
 
 uint32_t search(char *name) {
 	struct FAT_ENTRY *entry;
-	static char s[32];
+	static char s[9], q[9];
 	static char buffer[512];
 	char *pbuffer;
+	int i;
 
-	print("search ");
-	print(name);
-	print("\r\n");
+	for (i=0; i<8; i++) {
+		if (name[i] != '\0') {
+			q [i] = name[i];
+		} else {
+			q[i] = ' ';
+		}
+	}
+	q[8] = '\0';
+
+	print("search :");
+	print(q);
+	print(":\r\n");
 
 	floppy_reset();
 	floppy_read(buffer, 2, 0, 1, 1);
@@ -168,10 +178,10 @@ uint32_t search(char *name) {
 	while (entry->attr != 0) {
 		if (entry->attr & ATTR_ARCHIVE) {
 			strncpy(s, (char*)entry->filename, 8);
-			s[8] = 0;
+			s[8] = '\0';
 			print(s);
 			print("\r\n");
-			if (strcmp(s, "09WRITE ") == 0) {
+			if (strcmp(s, q) == 0) {
 				print("found ");
 				print(s);
 				print("\r\n");
