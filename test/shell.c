@@ -96,7 +96,7 @@ void dump_floppy(uint32_t addr) {
 	uint32_t i;
 
 	floppy_reset();
-	floppy_read(buffer, 1, 0, 1, 0);
+	floppy_read(buffer, 1, 0, 0, 0);
 
 	for (i=0; i<512; i++) {
 		if (i%16 == 0) {
