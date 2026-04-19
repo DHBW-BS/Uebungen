@@ -213,6 +213,8 @@ char *itoa(char *dest, int src) {
 void load(char *name, uint32_t addr) {
 	uint32_t s_addr, size;
 	int sector, track, head, drive;
+	static char buffer[512];
+	int i;
 
 	s_addr = search(name, &size);
 
@@ -235,7 +237,11 @@ void load(char *name, uint32_t addr) {
 	drive  = 1;						// drive B:
 
 	floppy_reset();
-	floppy_read(mem, sector, track, head, drive);
+	floppy_read(buffer, sector, track, head, drive);
+
+	for (i=0; i<size; i++) {
+		mem[i] = buffer[i];
+	}
 
 	return;
 }
