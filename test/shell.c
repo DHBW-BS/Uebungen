@@ -231,14 +231,10 @@ void load(char *name, uint32_t addr) {
 	puthex32(size);
 	print("\r\n");
 
-	sector = (addr/512)%18 + 1;		/* sector, numbering starts with 1 */
-	track  = (addr/512)/(2*18);		/* track, alternating between heads */
-	head   = ((addr/512)/18)%2;
+	sector = (s_addr/512)%18 + 1;		/* sector, numbering starts with 1 */
+	track  = (s_addr/512)/(2*18);		/* track, alternating between heads */
+	head   = ((s_addr/512)/18)%2;
 	drive  = 1;						/* drive B: */
-
-	sector = 18;
-	track = 0;
-	head = 1;
 
 	print("sector: ");
 	puthex32(sector);
