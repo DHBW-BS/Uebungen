@@ -130,7 +130,7 @@ void dump_mem(uint32_t addr) {
 	pbuffer = &buffer;
 	pbuffer = mem;
 
-	for (i=0; i<512; i++) {
+	for (i=0; i<256; i++) {
 		if (i%16 == 0) {
 			puthex32(i);
 			print("  ");
