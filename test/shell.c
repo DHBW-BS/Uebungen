@@ -96,7 +96,7 @@ void dump(char *addr) {
 	print("dump ");
 	print(addr);
 	print("\r\n");
-	puthex32(strtoul(addr));
+	puthex32(strtoul(addr, 16));
 	print("\r\n");
 
 	return;
