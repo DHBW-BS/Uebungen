@@ -224,7 +224,7 @@ void load(char *name, uint32_t addr) {
 	print("name: ");
 	print(name);
 	print("\r\n");
-	print("addr: \r\n");
+	print("addr: ");
 	puthex32(s_addr);
 	print("\r\n");
 	print("size: ");
@@ -236,15 +236,25 @@ void load(char *name, uint32_t addr) {
 	head   = ((addr/512)/18)%2;
 	drive  = 1;						/* drive B: */
 
+	print("sector: ");
+	puthex32(sector);
+	print("\r\n");
+	print("track: ");
+	puthex32(track);
+	print("\r\n");
+	print("head: ");
+	puthex32(head);
+	print("\r\n");
+
 	floppy_reset();
 	floppy_read(buffer, sector, track, head, drive);
 
 	print("buffer: ");
 	for (i=0; i<size; i++) {
 		puthex8(buffer[i]);
-		print("\r\n");
+		print(" ");
 	}
-	print(" ");
+	print("\r\n");
 
 	for (i=0; i<size; i++) {
 		mem[i] = buffer[i];
