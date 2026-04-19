@@ -100,7 +100,7 @@ void dump_floppy(uint32_t addr) {
 
 	for (i=0; i<512; i++) {
 		if (i%16 == 0) {
-			puthex32();
+			puthex32(i);
 			print("  ");
 			puthex8(buffer[i]);
 			print(" ");
