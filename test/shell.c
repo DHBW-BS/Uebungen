@@ -358,6 +358,26 @@ void shell(void) {
 
 	return;
 }
+void start(void) {
+	uint16_t addr;
+
+	print("start\n\r");
+
+	addr = 0x4000;
+
+	__asm__ volatile (
+		"    mov  $0x4100, %%eax\n"
+		"    mov  %%ax, %%ds\n"
+		"    pushl %%eax\n"
+		"    mov  $0x0100, %%eax\n"
+		"    pushl %%eax\n"
+		"    retf"
+		: /* no output */
+		: /* no input */
+		: "%eax" );
+
+	return;
+}
 
 int strcmp(const char *s1, const char *s2) {
 	char c;
@@ -380,27 +400,6 @@ int strcmp(const char *s1, const char *s2) {
 	}
 
 	return rc;
-}
-
-void start(void) {
-	uint16_t addr;
-
-	sys_print("start\n\r");
-
-	addr = 0x4000;
-
-	__asm__ volatile (
-		"    mov  $0x4100, %%eax\n"
-		"    mov  %%ax, %%ds\n"
-		"    pushl %%eax\n"
-		"    mov  $0x0100, %%eax\n"
-		"    pushl %%eax\n"
-		"    retf"
-		: /* no output */
-		: /* no input */
-		: "%eax" );
-
-	return;
 }
 
 int strncmp(const char *s1, const char *s2, int n) {
