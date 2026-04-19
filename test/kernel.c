@@ -21,12 +21,6 @@ int kmain(void) {
 
     registerinterrupt(9, keyboardhandler);
 
-    puthex8(0xEF);
-    print("\r\n");
-    puthex32(0xDEADBEEF);
-    print("\r\n");
-    halt();
-
     shell();
     halt();
 

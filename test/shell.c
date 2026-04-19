@@ -155,8 +155,10 @@ void load(char *name, uint32_t addr) {
 	print(name);
 	print("\r\n");
 	print("addr: \r\n");
+	puthex32(addr);
 	print("\r\n");
 	print("size: ");
+	puthex32(size);
 	print("\r\n");
 
 	return;
