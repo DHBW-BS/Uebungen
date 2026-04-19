@@ -99,7 +99,7 @@ void dump(char *addr) {
 	puthex32(strtoul(addr, 16));
 	print("\r\n");
 
-	dump_mem(puthex32(strtoul(addr, 16)));
+	dump_mem(strtoul(addr, 16));
 
 	return;
 }
