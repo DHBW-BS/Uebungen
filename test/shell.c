@@ -216,6 +216,8 @@ void load(char *name, uint32_t addr) {
 	static char buffer[512];
 	int i;
 
+	volatile unsigned char *mem = (unsigned char *)0x4100;
+
 	s_addr = search(name, &size);
 
 	print("load\r\n");
@@ -229,8 +231,6 @@ void load(char *name, uint32_t addr) {
 	puthex32(size);
 	print("\r\n");
 
-	volatile unsigned char *mem = (unsigned char *)0x4100;
-
 	sector = (addr/512)%18 + 1;		/* sector, numbering starts with 1 */
 	track  = (addr/512)/(2*18);		/* track, alternating between heads */
 	head   = ((addr/512)/18)%2;
@@ -238,6 +238,13 @@ void load(char *name, uint32_t addr) {
 
 	floppy_reset();
 	floppy_read(buffer, sector, track, head, drive);
+
+	printf("buffer: ");
+	for (i=0; i<size; i++) {
+		puthex8(buffer[i]);
+		printf("\r\n");
+	}
+	printf(" ");
 
 	for (i=0; i<size; i++) {
 		mem[i] = buffer[i];
