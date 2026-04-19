@@ -26,6 +26,7 @@ uint32_t search(char*, uint32_t*);
 int strcmp(const char*, const char*);
 char *strncpy(char*, const char*, int);
 int strncmp(const char*, const char*, int);
+uint32_t my_strtoul(const char*, int) {
 int tolower(int);
 
 void dir(char *buffer) {
@@ -94,6 +95,8 @@ void dir(char *buffer) {
 void dump(char *addr) {
 	print("dump ");
 	print(addr);
+	print("\r\n");
+	puthex32(strtol(addr));
 	print("\r\n");
 
 	return;
@@ -361,6 +364,30 @@ char *strncpy(char *dest, const char * src, int n) {
 		dest[i] = src[i];
 	}
 	return dest;
+}
+
+uint32_t strtoul(const char* nptr, int base) {
+	unsigned long n;
+
+	char *nstring;
+	int i;
+
+	if (base == 16) {
+		nstring = "0123456789abcdef";
+	}
+
+	n = 0;
+	while (nptr[0] != '\0') {
+		n = n * base;
+		i = 0;
+		while (nstring[i] != nptr[0]) {
+			i++;
+		}
+		n = n + i;
+		nptr++;
+	}
+
+	return n;
 }
 
 int tolower(int c) {
