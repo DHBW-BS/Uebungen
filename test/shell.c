@@ -91,6 +91,14 @@ void dir(char *buffer) {
 	return;
 }
 
+void dump(char *addr) {
+	print("dump ");
+	print(addr);
+	print("\r\n");
+
+	return;
+}
+
 void dump_floppy(uint32_t addr) {
 	static char buffer[512];
 	uint32_t i;
