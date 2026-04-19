@@ -239,12 +239,12 @@ void load(char *name, uint32_t addr) {
 	floppy_reset();
 	floppy_read(buffer, sector, track, head, drive);
 
-	printf("buffer: ");
+	print("buffer: ");
 	for (i=0; i<size; i++) {
 		puthex8(buffer[i]);
-		printf("\r\n");
+		print("\r\n");
 	}
-	printf(" ");
+	print(" ");
 
 	for (i=0; i<size; i++) {
 		mem[i] = buffer[i];
