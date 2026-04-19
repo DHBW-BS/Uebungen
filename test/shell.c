@@ -26,7 +26,7 @@ uint32_t search(char*, uint32_t*);
 int strcmp(const char*, const char*);
 char *strncpy(char*, const char*, int);
 int strncmp(const char*, const char*, int);
-uint32_t my_strtoul(const char*, int) {
+uint32_t strtoul(const char*, int);
 int tolower(int);
 
 void dir(char *buffer) {
@@ -96,7 +96,7 @@ void dump(char *addr) {
 	print("dump ");
 	print(addr);
 	print("\r\n");
-	puthex32(strtol(addr));
+	puthex32(strtoul(addr));
 	print("\r\n");
 
 	return;
