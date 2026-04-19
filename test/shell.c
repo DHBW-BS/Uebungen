@@ -229,7 +229,7 @@ void load(char *name, uint32_t addr) {
 	puthex32(size);
 	print("\r\n");
 
-	volatile unsigned char *mem;
+	volatile unsigned char *mem = (unsigned char *)0x4100;
 
 	sector = (addr/512)%18 + 1;		// sector, numbering starts with 1
 	track  = (addr/512)/(2*18);		// track, alternating between heads
