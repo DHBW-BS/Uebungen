@@ -124,9 +124,11 @@ void dump_mem(uint32_t addr) {
 	volatile unsigned char *mem;
 	static char buffer[512];
 	uint32_t i;
+	char *pbuffer;
 
 	mem = (unsigned char *)0x7c00;
-	buffer = mem;
+	pbuffer = &buffer;
+	pbuffer = mem;
 
 	for (i=0; i<512; i++) {
 		if (i%16 == 0) {
