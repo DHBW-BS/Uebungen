@@ -92,6 +92,18 @@ void dir(char *buffer) {
 }
 
 void dump_floppy(uint32_t addr) {
+	static char buffer[512];
+	int i;
+
+	floppy_reset();
+	floppy_read(buffer, 1, 0, 1, 0);
+
+	for (i=0; i<512; i++) {
+		puthex8(buffer[i]);
+		print(" ");
+	}
+	print("\r\n");
+
 	return;
 }
 
@@ -260,6 +272,8 @@ int strcmp(const char *s1, const char *s2) {
 	char c;
 	int rc = 0;
 	int i=0;
+
+	dump_floppy(0);
 
 	while((c = s1[i]) != '\0') {
 		if (s2[i] == '\0') {
