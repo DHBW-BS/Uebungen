@@ -168,7 +168,7 @@ void execute(char *cmd) {
 		dir(buffer);
 	} else if (strncmp(cmd, "dump ", 5) == 0) {
 		print("CMD: load\r\n");
-		load(cmd+5);
+		dump(cmd+5);
 	} else if (strcmp(cmd, "halt") == 0) {
 		print("CMD: halt\r\n");
 		halt();
