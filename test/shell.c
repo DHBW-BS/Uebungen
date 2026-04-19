@@ -125,7 +125,7 @@ void dump_mem(uint32_t addr) {
 	static char buffer[512];
 	uint32_t i;
 
-	mem = (unsigned char *)0x7c00
+	mem = (unsigned char *)0x7c00;
 	buffer = mem;
 
 	for (i=0; i<512; i++) {
