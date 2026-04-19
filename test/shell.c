@@ -99,6 +99,8 @@ void dump(char *addr) {
 	puthex32(strtoul(addr, 16));
 	print("\r\n");
 
+	dump_mem(puthex32(strtoul(addr, 16)));
+
 	return;
 }
 
@@ -210,6 +212,7 @@ char *itoa(char *dest, int src) {
 
 void load(char *name, uint32_t addr) {
 	uint32_t s_addr, size;
+	int sector, track, head, drive;
 
 	s_addr = search(name, &size);
 
@@ -223,6 +226,16 @@ void load(char *name, uint32_t addr) {
 	print("size: ");
 	puthex32(size);
 	print("\r\n");
+
+	volatile unsigned char *mem;
+
+	sector = (addr/512)%18 + 1;		// sector, numbering starts with 1
+	track  = (addr/512)/(2*18);		// track, alternating between heads
+	head   = ((addr/512)/18)%2;
+	drive  = 1;						// drive B:
+
+	floppy_reset();
+	floppy_read(mem, sector, track, head, drive);
 
 	return;
 }
