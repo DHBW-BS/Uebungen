@@ -93,14 +93,27 @@ void dir(char *buffer) {
 
 void dump_floppy(uint32_t addr) {
 	static char buffer[512];
-	int i;
+	uint32_t i;
 
 	floppy_reset();
 	floppy_read(buffer, 1, 0, 1, 0);
 
 	for (i=0; i<512; i++) {
-		puthex8(buffer[i]);
-		print(" ");
+		if (i%16 == 0) {
+			puthex32();
+			print("  ");
+			puthex8(buffer[i]);
+			print(" ");
+		} else if (i%16 == 7) {
+			puthex8(buffer[i]);
+			print("  ");
+		} else if (i%16 == 15) {
+			puthex8(buffer[i]);
+			print("\r\n");
+		} else {
+			puthex8(buffer[i]);
+			print(" ");
+		}
 	}
 	print("\r\n");
 
