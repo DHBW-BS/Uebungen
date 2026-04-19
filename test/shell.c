@@ -23,6 +23,7 @@ void dump_mem(uint32_t addr);
 char *itoa(char*, int);
 void load(char *name, uint32_t addr);
 uint32_t search(char*, uint32_t*);
+void start(start);
 int strcmp(const char*, const char*);
 char *strncpy(char*, const char*, int);
 int strncmp(const char*, const char*, int);
@@ -166,6 +167,7 @@ void execute(char *cmd) {
 
 	if (strcmp(cmd, "start") == 0) {
 		print("CMD: start\r\n");
+		start();
 	} else if (strcmp(cmd, "dir") == 0) {
 		print("CMD: dir\r\n");
 		floppy_reset();
@@ -378,6 +380,27 @@ int strcmp(const char *s1, const char *s2) {
 	}
 
 	return rc;
+}
+
+void start(void) {
+	uint16_t addr;
+
+	sys_print("start\n\r");
+
+	addr = 0x4000;
+
+	__asm__ volatile (
+		"    mov  $0x4100, %%eax\n"
+		"    mov  %%ax, %%ds\n"
+		"    pushl %%eax\n"
+		"    mov  $0x0100, %%eax\n"
+		"    pushl %%eax\n"
+		"    retf"
+		: /* no output */
+		: /* no input */
+		: "%eax" );
+
+	return;
 }
 
 int strncmp(const char *s1, const char *s2, int n) {
