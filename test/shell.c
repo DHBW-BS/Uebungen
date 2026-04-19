@@ -236,6 +236,10 @@ void load(char *name, uint32_t addr) {
 	head   = ((addr/512)/18)%2;
 	drive  = 1;						/* drive B: */
 
+	sector = 18;
+	track = 0;
+	head = 1;
+
 	print("sector: ");
 	puthex32(sector);
 	print("\r\n");
@@ -323,7 +327,7 @@ uint32_t search(char *name, uint32_t *size) {
 	puthex32(addr);
 	print("\r\n");
 	print("size: ");
-	puthex32(size);
+	puthex32(*size);
 	print("\r\n");
 
 	return addr;
