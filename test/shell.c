@@ -358,6 +358,7 @@ void shell(void) {
 
 	return;
 }
+
 void start(void) {
 	uint16_t addr;
 

@@ -20,6 +20,7 @@ int kmain(void) {
     print("starting kernel ...\r\n");
 
     registerinterrupt(9, keyboardhandler);
+	registerinterrupt(0x21, sys_syscall);
 
     shell();
     halt();
