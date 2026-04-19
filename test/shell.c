@@ -319,9 +319,11 @@ uint32_t search(char *name, uint32_t *size) {
 	print("name: ");
 	print(s);
 	print("\r\n");
-	print("addr: \r\n");
+	print("addr: );
+	puthex32(addr);
 	print("\r\n");
 	print("size: ");
+	puthex32(size);
 	print("\r\n");
 
 	return addr;
