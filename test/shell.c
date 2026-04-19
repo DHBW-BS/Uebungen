@@ -124,7 +124,7 @@ void dump_mem(uint32_t addr) {
 	volatile unsigned char *mem;
 	uint32_t i;
 
-	mem = (unsigned char *)0x7c00;
+	mem = (unsigned char *)addr;
 
 	for (i=0; i<256; i++) {
 		if (i%16 == 0) {
