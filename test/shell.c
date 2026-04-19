@@ -141,7 +141,7 @@ void dump_mem(uint32_t addr) {
 
 	for (i=0; i<256; i++) {
 		if (i%16 == 0) {
-			puthex32(i);
+			puthex32(i+addr);
 			print("  ");
 			puthex8(mem[i]);
 			print(" ");
