@@ -98,7 +98,7 @@ void dump_floppy(uint32_t addr) {
 	floppy_reset();
 	floppy_read(buffer, 1, 0, 0, 0);
 
-	for (i=0; i<512; i++) {
+	for (i=0; i<256; i++) {
 		if (i%16 == 0) {
 			puthex32(i);
 			print("  ");
@@ -121,6 +121,32 @@ void dump_floppy(uint32_t addr) {
 }
 
 void dump_mem(uint32_t addr) {
+	volatile unsigned char *mem;
+	static char buffer[512];
+	uint32_t i;
+
+	mem = (unsigned char *)0x7c00
+	buffer = mem;
+
+	for (i=0; i<512; i++) {
+		if (i%16 == 0) {
+			puthex32(i);
+			print("  ");
+			puthex8(buffer[i]);
+			print(" ");
+		} else if (i%16 == 7) {
+			puthex8(buffer[i]);
+			print("  ");
+		} else if (i%16 == 15) {
+			puthex8(buffer[i]);
+			print("\r\n");
+		} else {
+			puthex8(buffer[i]);
+			print(" ");
+		}
+	}
+	print("\r\n");
+
 	return;
 }
 
@@ -257,7 +283,7 @@ void shell(void) {
 	static char s[80];
 	char c;
 
-	dump_floppy(0);
+	dump_mem(0x7c00);
 
 	int i = 0;
 	s[0] = '\0';
