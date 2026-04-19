@@ -231,10 +231,10 @@ void load(char *name, uint32_t addr) {
 
 	volatile unsigned char *mem = (unsigned char *)0x4100;
 
-	sector = (addr/512)%18 + 1;		// sector, numbering starts with 1
-	track  = (addr/512)/(2*18);		// track, alternating between heads
+	sector = (addr/512)%18 + 1;		/* sector, numbering starts with 1 */
+	track  = (addr/512)/(2*18);		/* track, alternating between heads */
 	head   = ((addr/512)/18)%2;
-	drive  = 1;						// drive B:
+	drive  = 1;						/* drive B: */
 
 	floppy_reset();
 	floppy_read(buffer, sector, track, head, drive);
