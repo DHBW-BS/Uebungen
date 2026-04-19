@@ -166,6 +166,9 @@ void execute(char *cmd) {
 		floppy_reset();
 		floppy_read(buffer, 2, 0, 1, 1);
 		dir(buffer);
+	} else if (strncmp(cmd, "dump ", 5) == 0) {
+		print("CMD: load\r\n");
+		load(cmd+5);
 	} else if (strcmp(cmd, "halt") == 0) {
 		print("CMD: halt\r\n");
 		halt();
@@ -288,8 +291,6 @@ uint32_t search(char *name, uint32_t *size) {
 void shell(void) {
 	static char s[80];
 	char c;
-
-	dump_mem(0x7c00);
 
 	int i = 0;
 	s[0] = '\0';
