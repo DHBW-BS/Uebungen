@@ -45,16 +45,16 @@ void keyboardhandler(void) {
         : /* no input */
         : /* no globber */);
 
-    c = inb(0x60);              /* get key data */
-    a = inb(0x61);              /* get keyboard control */
+    c = inb(0x60);                  /* get key data */
+    a = inb(0x61);                  /* get keyboard control */
     outb(a & 0x80, 0x61);
     outb(a, 0x61);
     outb(0x20, 0x20);
 
-	if (!(c&0x80)) {			/* key press */
+	if (!(c&0x80)) {			    /* key press */
         printHex8(c);               /* print key code */
         print("  ");
-        print(keymap[c]);
+        print(keymap[c & 0xff]);
         print("\n\r");
     }
 
