@@ -73,7 +73,7 @@ void keyboardhandler(void) {
         print("  ");
         printHex8(keymap[c]);
         print("  ");
-        print(keymap[c & 0xff]);
+        putchar(keymap[c]);
         print("\n\r");
     }
 
