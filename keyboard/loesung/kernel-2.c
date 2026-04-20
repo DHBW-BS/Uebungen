@@ -1,6 +1,6 @@
 #include <system.h>
 
-char keymap[] = {
+static char keymap[] = {
 	'\0', '\0', '1',  '2',  '3',  '4',  '5',  '6',		/* 00 */
 	'7',  '8',  '9',  '0',  '\0', '\0', '\0', '\0',		/* 08 */
 	'q',  'w',  'e',  'r',  't',  'y',  'u',  'i',		/* 10 */
@@ -37,20 +37,6 @@ void outb(uint8_t v, uint16_t port) {
 		: /* no globber */);
 }
 
-void printHex16(uint16_t n) {
-    char hexstring[] = "0123456789ABCDEF";
-    char outstring[] = "    ";
-	int i;
-
-    for (i=0; i<4;i++) {
-        outstring[1-i] = hexstring[n&0x0f];
-    	n = n >> 4;
-    }
-    print(outstring);
-
-    return;
-}
-
 void keyboardhandler(void) {
     uint8_t a, c;
 
@@ -68,10 +54,6 @@ void keyboardhandler(void) {
 
 	if (!(c&0x80)) {			    /* key press */
         printHex8(c);               /* print key code */
-        print("  ");
-        printHex16(c);
-        print("  ");
-        printHex8(keymap[c]);
         print("  ");
         putchar(keymap[c]);
         print("\n\r");
