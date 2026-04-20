@@ -74,7 +74,7 @@ void keyboardhandler(void) {
 
     if (c == 0x2a) {                /* shift key press */
         pkeymap = ukeymap;
-    } else if (c == 0xaa)) {		/* shift key release */
+    } else if (c == 0xaa) {		    /* shift key release */
         pkeymap = lkeymap;
     } else if (!(c&0x80)) {			/* key press */
         printHex8(c);               /* print key code */
