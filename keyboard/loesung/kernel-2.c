@@ -39,10 +39,10 @@ void outb(uint8_t v, uint16_t port) {
 
 void printHex16(uint16_t n) {
     char hexstring[] = "0123456789ABCDEF";
-    char outstring[] = "  ";
+    char outstring[] = "    ";
 	int i;
 
-    for (i=0; i<2;i++) {
+    for (i=0; i<4;i++) {
         outstring[1-i] = hexstring[n&0x0f];
     	n = n >> 4;
     }
