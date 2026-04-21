@@ -49,6 +49,8 @@ void syscall_09_write(uint16_t ds, uint16_t dx) {
 	char *p;
 	char s;
 
+	print("System Call 09\n\r");
+
 	p = (char*)(uint16_t*)((ds << 4) + dx);
 	while ((s=*p) != '$') {
 		putchar(s);
@@ -60,6 +62,8 @@ void syscall_09_write(uint16_t ds, uint16_t dx) {
 
 /* 4C - EXIT - TERMINATE WITH RETURN CODE */
 void syscall_4C_exit(void) {
+	print("System Call 09\n\r");
+
 	/* enable interrupts */
 
 	/* should we worry about the stack ? */
