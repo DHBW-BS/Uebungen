@@ -14,7 +14,11 @@ extern void outb(uint8_t v, uint16_t port);
 extern void registerinterrupt(int irq, void* handler);
 
 /* keyboard */
+extern char getchar(void);
 extern void keyboardhandler(void);
+
+/* shell */
+extern void shell(void);
 
 /* terminal */
 extern void print(char *s);
