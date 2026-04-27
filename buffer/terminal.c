@@ -21,3 +21,17 @@ void putchar(char c) {
 
     return;
 }
+
+void printHex8(uint8_t n) {
+    char hexstring[] = "0123456789ABCDEF";
+    char outstring[] = "  ";
+	int i;
+
+    for (i=0; i<2;i++) {
+        outstring[1-i] = hexstring[n&0x0f];
+    	n = n >> 4;
+    }
+    print(outstring);
+
+	return;
+}
