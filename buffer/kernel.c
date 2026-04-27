@@ -23,7 +23,7 @@ int kmain(void) {
         );
     }
 
-    shell();
+    print("starting shell ...\r\n");
     shell();
     halt();
 
