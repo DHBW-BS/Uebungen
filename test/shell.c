@@ -227,7 +227,7 @@ void load(char *name, uint32_t addr) {
 	print(name);
 	print("\r\n");
 	print("addr: ");
-	puthex32(s_addr);
+	printhex32(s_addr);
 	print("\r\n");
 	print("size: ");
 	printhex32(size);
