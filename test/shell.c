@@ -144,7 +144,7 @@ void dump_mem(uint32_t addr) {
 		if (i%16 == 0) {
 			printhex32(i+addr);
 			print("  ");
-			puthex8(mem[i]);
+			printhex8(mem[i]);
 			print(" ");
 		} else if (i%16 == 7) {
 			printhex8(mem[i]);
