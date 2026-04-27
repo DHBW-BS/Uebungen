@@ -7,7 +7,8 @@ void shell(void) {
 	while (1) {
 		if ((c = getchar())) {
 			if (c == '\n') {
-				print("\rCommand empfangen\n\r");
+				print("\rCommand empfangen\r\n");
+				print("c:> ");
 			} else {
 			}
 		}
