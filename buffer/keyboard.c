@@ -62,6 +62,7 @@ char getchar(void) {
 
 void keyboardhandler(void) {
     uint8_t a, c;
+    static char *pkeymap = lkeymap;
 
     __asm__ volatile (
         "    pusha"
