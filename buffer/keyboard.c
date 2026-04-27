@@ -80,8 +80,8 @@ void keyboardhandler(void) {
         pkeymap = ukeymap;
     } else if (c == 0xaa) {		    /* shift key release */
         pkeymap = lkeymap;
-    } else if (!(c&0x80)) {			/* key press */
-        printHex8(c);               /* print key code */
+    } else if (!(c&0x80)) {		    /* key press */
+        printHex8(c);                 /* print key code */
         print("  ");
         putchar(pkeymap[c]);
         print("\n\r");
