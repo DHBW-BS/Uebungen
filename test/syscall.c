@@ -1,5 +1,8 @@
 #include <system.h>
 
+void syscall_09_write(uint16_t, uint16_t);
+void syscall_4C_exit(void);
+
 void syscall(void) {
 	uint16_t ds;
 	uint32_t nr, edx;
@@ -23,9 +26,9 @@ void syscall(void) {
 	print("System Call\n\r");
 
 	if ((nr & 0xff00) == 0x0900) {
-		syscall_09_write((uint16_t)(ds-0x1000), (uint16_t)(edx & 0xffff));
+		syscall_09_write(ds-0x1000(uint16_t), (uint16_t)(edx & 0xffff));
 	} else if ((nr & 0xff00) == 0x4c00) {
-		syscall_4C_exit(void);
+		syscall_4C_exit();
 	}
 
 	__asm__ volatile (
