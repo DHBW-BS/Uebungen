@@ -53,9 +53,12 @@ void syscall_09_write(uint16_t ds, uint16_t dx) {
 	char s;
 
 	print("System Call 09\n\r");
+	printhex16(ds);
 
 	p = (char*)(uint16_t*)((ds << 4) + dx);
+	printhex16(ds);
 	while ((s=*p) != '$') {
+		printhex16(ds);
 		putchar(s);
 		p++;
 	}
