@@ -57,7 +57,11 @@ Release der Taste zu ignorieren.
 
 3. Verändern Sie das Programm so, dass bei gleichzeitigem drücken der Shift-Taste das entsprechende Zeichen in Großbuchstaben ausgegeben wird.
 
-## Tastatur Puffer
+## Aufgabe Tastatur Puffer
+
+1. Implementieren Sie die Routine `getchar`, so daß die eingegeben Zeichen in einer Loop von der Routine `shell` abgeholt werden und auf dem Bildschirm
+erscheinen. Bei einem Return soll die Eingabe ausgewertet werden und eine neue Command Eingabe begonnen werden.
 
 ## Aufgabe Shell
 
+1. Implementieren Sie in der Routine `shell` ein erstes Command exit mit dem `shell` beendet und das System angehalten wird.
