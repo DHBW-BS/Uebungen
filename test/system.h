@@ -35,5 +35,6 @@ void syscall(void);
 /* terminal */
 extern void print(char *s);
 extern void putchar(char c);
-extern void puthex8(uint8_t n);
-extern void puthex32(uint32_t n);
+extern void printhex8(uint8_t n);
+extern void printhex16(uint16_t n);
+extern void printhex32(uint32_t n);

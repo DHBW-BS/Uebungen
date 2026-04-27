@@ -22,7 +22,7 @@ void putchar(char c) {
     return;
 }
 
-void puthex8(uint8_t n) {
+void printhex8(uint8_t n) {
     char hexstring[] = "0123456789ABCDEF";
     char outstring[] = "  ";
 	int i;
@@ -36,7 +36,21 @@ void puthex8(uint8_t n) {
 	return;
 }
 
-void puthex32(uint32_t n) {
+void printhex16(uint16_t n) {
+    char hexstring[] = "0123456789ABCDEF";
+    char outstring[] = "  ";
+	int i;
+
+    for (i=0; i<4;i++) {
+        outstring[3-i] = hexstring[n&0x0f];
+    	n = n >> 4;
+    }
+    print(outstring);
+
+	return;
+}
+
+void printhex32(uint32_t n) {
     char hexstring[] = "0123456789ABCDEF";
     char outstring[] = "        ";
 	int i;

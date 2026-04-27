@@ -97,7 +97,7 @@ void dump(char *addr) {
 	print("dump ");
 	print(addr);
 	print("\r\n");
-	puthex32(strtoul(addr, 16));
+	printhex32(strtoul(addr, 16));
 	print("\r\n");
 
 	dump_mem(strtoul(addr, 16));
@@ -114,18 +114,18 @@ void dump_floppy(uint32_t addr) {
 
 	for (i=0; i<256; i++) {
 		if (i%16 == 0) {
-			puthex32(i);
+			printhex32(i);
 			print("  ");
 			puthex8(buffer[i]);
 			print(" ");
 		} else if (i%16 == 7) {
-			puthex8(buffer[i]);
+			printhex8(buffer[i]);
 			print("  ");
 		} else if (i%16 == 15) {
 			puthex8(buffer[i]);
 			print("\r\n");
 		} else {
-			puthex8(buffer[i]);
+			printhex8(buffer[i]);
 			print(" ");
 		}
 	}
@@ -142,18 +142,18 @@ void dump_mem(uint32_t addr) {
 
 	for (i=0; i<256; i++) {
 		if (i%16 == 0) {
-			puthex32(i+addr);
+			printhex32(i+addr);
 			print("  ");
 			puthex8(mem[i]);
 			print(" ");
 		} else if (i%16 == 7) {
-			puthex8(mem[i]);
+			printhex8(mem[i]);
 			print("  ");
 		} else if (i%16 == 15) {
-			puthex8(mem[i]);
+			printhex8(mem[i]);
 			print("\r\n");
 		} else {
-			puthex8(mem[i]);
+			printhex8(mem[i]);
 			print(" ");
 		}
 	}
@@ -230,7 +230,7 @@ void load(char *name, uint32_t addr) {
 	puthex32(s_addr);
 	print("\r\n");
 	print("size: ");
-	puthex32(size);
+	printhex32(size);
 	print("\r\n");
 
 	sector = (s_addr/512)%18 + 1;		/* sector, numbering starts with 1 */
@@ -239,13 +239,13 @@ void load(char *name, uint32_t addr) {
 	drive  = 1;						/* drive B: */
 
 	print("sector: ");
-	puthex32(sector);
+	printhex32(sector);
 	print("\r\n");
 	print("track: ");
-	puthex32(track);
+	printhex32(track);
 	print("\r\n");
 	print("head: ");
-	puthex32(head);
+	printhex32(head);
 	print("\r\n");
 
 	floppy_reset();
@@ -253,7 +253,7 @@ void load(char *name, uint32_t addr) {
 
 	print("buffer: ");
 	for (i=0; i<size; i++) {
-		puthex8(buffer[i]);
+		printhex8(buffer[i]);
 		print(" ");
 	}
 	print("\r\n");
@@ -322,10 +322,10 @@ uint32_t search(char *name, uint32_t *size) {
 	print(s);
 	print("\r\n");
 	print("addr: ");
-	puthex32(addr);
+	printhex32(addr);
 	print("\r\n");
 	print("size: ");
-	puthex32(*size);
+	printhex32(*size);
 	print("\r\n");
 
 	return addr;
