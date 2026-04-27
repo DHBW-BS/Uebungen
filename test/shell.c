@@ -116,13 +116,13 @@ void dump_floppy(uint32_t addr) {
 		if (i%16 == 0) {
 			printhex32(i);
 			print("  ");
-			puthex8(buffer[i]);
+			printhex8(buffer[i]);
 			print(" ");
 		} else if (i%16 == 7) {
 			printhex8(buffer[i]);
 			print("  ");
 		} else if (i%16 == 15) {
-			puthex8(buffer[i]);
+			printhex8(buffer[i]);
 			print("\r\n");
 		} else {
 			printhex8(buffer[i]);
