@@ -13,7 +13,7 @@ void halt(void) {
 }
 
 int kmain(void) {
-    print("starting kernel ...\r\n");
+    print("starting kernel ... 1\r\n");
 
     registerinterrupt(9, keyboardhandler);
 
