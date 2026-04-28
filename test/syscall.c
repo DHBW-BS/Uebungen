@@ -33,9 +33,6 @@ void syscall(void) {
 
 	__asm__ volatile (
 		"    mov %%ax, %%ds\n"
-		"    mov $0x41, %%al\n"
-		"    mov $0x0e, %%ah\n"
-		"    int $0x10\n"
 		"    mov  $0x20, %%al\n"
 		"    out  %%al, $0x20\n"
 		"    leave\n"
@@ -53,12 +50,9 @@ void syscall_09_write(uint16_t ds, uint16_t dx) {
 	char s;
 
 	print("System Call 09\n\r");
-	printhex16(ds);
 
 	p = (char*)(uint16_t*)((ds << 4) + dx);
-	printhex16(ds);
 	while ((s=*p) != '$') {
-		printhex16(ds);
 		putchar(s);
 		p++;
 	}
