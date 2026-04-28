@@ -62,7 +62,7 @@ void syscall_09_write(uint16_t ds, uint16_t dx) {
 
 /* 4C - EXIT - TERMINATE WITH RETURN CODE */
 void syscall_4C_exit(void) {
-	print("System Call 09\n\r");
+	print("System Call 4C\n\r");
 
 	/* enable interrupts */
 
