@@ -30,7 +30,9 @@ void syscall(void) {
 	} else if ((nr & 0xff00) == 0x4c00) {
 		syscall_4C_exit();
 	} else {
-		print("unkown System Call\n\r");
+		print("unkown System Call 0x");
+		printhex32(nr);
+		print("\n\r");
 	}
 
 	__asm__ volatile (
