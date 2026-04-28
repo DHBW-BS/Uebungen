@@ -29,6 +29,8 @@ void syscall(void) {
 		syscall_09_write(ds, (uint16_t)(edx & 0xffff));
 	} else if ((nr & 0xff00) == 0x4c00) {
 		syscall_4C_exit();
+	} else {
+		print("unkown System Call\n\r");
 	}
 
 	__asm__ volatile (
