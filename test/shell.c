@@ -367,6 +367,8 @@ void start(void) {
 	addr = 0x4000;
 
 	__asm__ volatile (
+		"    mov  $0x0400, %%eax\n"
+		"    mov  %%ax, %%ds\n"
 		"    mov  $0x4100, %%eax\n"
 		"    pushl %%eax\n"
 		"    ret"

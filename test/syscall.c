@@ -26,7 +26,7 @@ void syscall(void) {
 	print("System Call\n\r");
 
 	if ((nr & 0xff00) == 0x0900) {
-		syscall_09_write(ds-0x1000, (uint16_t)(edx & 0xffff));
+		syscall_09_write(ds, (uint16_t)(edx & 0xffff));
 	} else if ((nr & 0xff00) == 0x4c00) {
 		syscall_4C_exit();
 	}
