@@ -2,5 +2,9 @@
   name: "Betriebssysteme",
   build: {
     "dockerfile": "Dockerfile"
+  },
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {
+    "ghcr.io/devcontainers/features/desktop-lite:1": {}
   }
 }
